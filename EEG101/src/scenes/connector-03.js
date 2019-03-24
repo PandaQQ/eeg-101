@@ -15,6 +15,7 @@ import LinkButton from "../components/WhiteLinkButton";
 import NoiseIndicator from "../components/NoiseIndicator";
 import I18n from "../i18n/i18n";
 import * as colors from "../styles/colors";
+import SlideFour from "./slide-04";
 
 // Sets isVisible prop by comparing state.scene.key (active scene) to the key of the wrapped scene
 function mapStateToProps(state) {
@@ -59,14 +60,14 @@ class ConnectorThree extends Component {
         <View style={styles.titleBox}>
           <Text style={styles.title}>{I18n.t("step3Title")}</Text>
           <Text style={styles.instructions}>{I18n.t("museFitProperly")}</Text>
-          <Text style={styles.body}>{I18n.t("fitInstructions")}</Text>
+          {/*<Text style={styles.body}>{I18n.t("fitInstructions")}</Text>*/}
         </View>
         <View style={styles.indicatorContainer}>
           {this.renderNoiseIndicator()}
         </View>
 
         <View style={styles.buttonContainer}>
-          <LinkButton path="/slideOne"> BEGIN LESSON </LinkButton>
+          <LinkButton path="/SlideFour"> START </LinkButton>
         </View>
       </View>
     );

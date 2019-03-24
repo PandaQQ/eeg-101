@@ -12,6 +12,4 @@ I18n.translations = {
   de,
   fr
 };
-
-
 export default I18n;

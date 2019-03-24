@@ -50,10 +50,10 @@ class Landing extends Component {
           style={styles.titleBox}
         >
           <Text style={styles.title}>
-            {I18n.t("welcomeEEG101")}{'\n'}EEG 101
+            My Brain
           </Text>
           <Text style={styles.body}>
-            {I18n.t("tutorialDescription")}
+            MyBrian demonstrates how EEG device can be used to measure the electrical activity of the brain.
           </Text>
         </View>
         <View style={styles.buttonContainer}>

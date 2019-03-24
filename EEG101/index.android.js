@@ -37,11 +37,7 @@ import BCIOne from "./src/scenes/bci-01.js";
 import BCITwo from "./src/scenes/bci-02.js";
 import BCIRun from "./src/scenes/bci-run.js";
 import BCITrain from "./src/scenes/bci-train.js";
-import OfflineSlideOne from "./src/scenes/offlineMode/slide-01";
-import OfflineSlideThree from "./src/scenes/offlineMode/slide-03";
-import OfflineSlideFour from "./src/scenes/offlineMode/slide-04";
-import OfflineSlideEight from "./src/scenes/offlineMode/slide-08";
-import OfflineSlideNine from "./src/scenes/offlineMode/slide-09";
+
 
 // reducer is a function
 import reducer from "./src/redux/reducer";
@@ -62,9 +58,9 @@ function mapDispatchToProps(dispatch) {
 }
 
 // Connect SideMenu to Redux
-const DrawerWithRedux = withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(Drawer)
-);
+// const DrawerWithRedux = withRouter(
+//   connect(mapStateToProps, mapDispatchToProps)(Drawer)
+// );
 
 // Create store
 const store = createStore(reducer, applyMiddleware(thunk));
@@ -80,23 +76,7 @@ class EEG101 extends Component {
           <AndroidBackButton>
             <View style={mainViewStyle}>
               <StatusBar backgroundColor={colors.mariner} />
-              <DrawerWithRedux
-                content={<SideMenu drawer={this.ref} />}
-                type="overlay"
-                tapToClose={true}
-                openDrawerOffset={0.2} // 20% gap on the right side of drawer
-                panCloseMask={0.2}
-                closedDrawerOffset={-5}
-                captureGestures="open"
-                styles={{
-                  drawer: { elevation: 3 },
-                  main: { paddingLeft: 3 }
-                }}
-                tweenHandler={ratio => ({
-                  main: { opacity: (2 - ratio) / 2, backgroundColor: "black" }
-                })}
-              >
-                <NavBar />
+                {/*<NavBar />*/}
                 <Switch>
                   <Route exact path="/" component={Landing} />
                   <Route path="/connectorOne" component={ConnectorOne} />
@@ -117,30 +97,7 @@ class EEG101 extends Component {
                   <Route path="/bciTwo" component={BCITwo} />
                   <Route path="/bciRun" component={BCIRun} />
                   <Route path="/bciTrain" component={BCITrain} />
-                  <Route path="/offline/slideOne" component={OfflineSlideOne} />
-                  <Route path="/offline/slideTwo" component={SlideTwo} />
-                  <Route
-                    path="/offline/slideThree"
-                    component={OfflineSlideThree}
-                  />
-
-                  <Route
-                    path="/offline/slideFour"
-                    component={OfflineSlideFour}
-                  />
-                  <Route path="/offline/slideFive" component={SlideFive} />
-                  <Route path="/offline/slideSix" component={SlideSix} />
-                  <Route path="/offline/slideSeven" component={SlideSeven} />
-                  <Route
-                    path="/offline/slideEight"
-                    component={OfflineSlideEight}
-                  />
-                  <Route
-                    path="/offline/slideNine"
-                    component={OfflineSlideNine}
-                  />
                 </Switch>
-              </DrawerWithRedux>
             </View>
           </AndroidBackButton>
         </NativeRouter>

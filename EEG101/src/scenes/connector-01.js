@@ -76,14 +76,6 @@ class ConnectorOne extends Component {
           <Text style={styles.body}>{I18n.t("museFirstGenWarning")}</Text>
         </View>
         <View style={styles.offlineButtonContainer}>
-          <SandboxButton
-            onPress={() => this.props.setOfflineMode(!this.props.isOfflineMode)}
-            active={this.props.isOfflineMode}
-          >
-            {this.props.isOfflineMode
-              ? I18n.t("offlineModeDisable")
-              : I18n.t("offlineModeEnable")}
-          </SandboxButton>
         </View>
         <View style={styles.buttonContainer}>{this.renderButton()}</View>
       </View>

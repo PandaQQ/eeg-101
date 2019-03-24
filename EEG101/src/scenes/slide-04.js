@@ -71,7 +71,7 @@ class SlideFour extends Component {
               </PopUpLink>{' '}
               {I18n.t("toReduceSignals")}
             </Text>
-            <LinkButton path="./slideFive">
+            <LinkButton path="./slideNine">
               {I18n.t("nextLink")}
             </LinkButton>
           </View>

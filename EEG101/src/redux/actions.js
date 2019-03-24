@@ -134,7 +134,7 @@ export function initNativeEventListeners() {
             subscription.remove();
             dispatch(setBatteryValue(null));
             listenerOn = false;
-            Battery.stopReading();   
+            Battery.stopReading();
           }
           break;
       }
@@ -156,7 +156,7 @@ export function initNativeEventListeners() {
     // BCI Prediction
     nativeEventEmitter.addListener("PREDICT_RESULT", message => {
       if (getState().isBCIRunning) {
-        if (message == 2) {
+        if (message === 2) {
           actionOn(getState().bciAction);
         } else {
           actionOff(getState().bciAction);

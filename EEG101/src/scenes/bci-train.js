@@ -285,7 +285,7 @@ class BCITrain extends Component {
           <View style={styles.buttonContainer}>
             <LinkButton
               path="/bciRun"
-              disabled={this.state.score === "" || this.state.bciAction == ""}
+              disabled={this.state.score === "" || this.state.bciAction === ""}
             >
               {I18n.t("trainRunIt")}
             </LinkButton>
