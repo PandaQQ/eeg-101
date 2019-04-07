@@ -31,11 +31,7 @@ class Landing extends Component {
 
   render() {
     return (
-      <ImageBackground
-        source={require("../assets/clouds.png")}
-        style={styles.container}
-        resizeMode="stretch"
-      >
+        <View style={styles.container}>
         <View
           onLayout={event => {
             // Captures the width and height of the graphContainer to determine overlay positioning properties in PSDGraph
@@ -61,7 +57,7 @@ class Landing extends Component {
             {I18n.t("getStartedLink")}
           </LinkButton>
         </View>
-      </ImageBackground>
+        </View>
     );
   }
 }
@@ -84,7 +80,7 @@ const styles = MediaQueryStyleSheet.create(
       alignItems: "stretch",
       width: null,
       height: null,
-      backgroundColor: "rgba(0,0,0,0)"
+      backgroundColor: colors.skyBlue
     },
 
     buttonContainer: {

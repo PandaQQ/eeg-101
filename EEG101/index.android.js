@@ -76,23 +76,13 @@ class EEG101 extends Component {
           <AndroidBackButton>
             <View style={mainViewStyle}>
               <StatusBar backgroundColor={colors.mariner} />
-                {/*<NavBar />*/}
                 <Switch>
                   <Route exact path="/" component={Landing} />
                   <Route path="/connectorOne" component={ConnectorOne} />
                   <Route path="/connectorTwo" component={ConnectorTwo} />
                   <Route path="/connectorThree" component={ConnectorThree} />
-                  <Route path="/slideOne" component={SlideOne} />
-                  <Route path="/slideTwo" component={SlideTwo} />
-                  <Route path="/slideThree" component={SlideThree} />
                   <Route path="/slideFour" component={SlideFour} />
-                  <Route path="/slideFive" component={SlideFive} />
-                  <Route path="/slideSix" component={SlideSix} />
-                  <Route path="/slideSeven" component={SlideSeven} />
-                  <Route path="/slideEight" component={SlideEight} />
                   <Route path="/slideNine" component={SlideNine} />
-                  <Route path="/sandbox" component={Sandbox} />
-                  <Route path="/end" component={End} />
                   <Route path="/bciOne" component={BCIOne} />
                   <Route path="/bciTwo" component={BCITwo} />
                   <Route path="/bciRun" component={BCIRun} />

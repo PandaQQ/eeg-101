@@ -50,37 +50,9 @@ class SlideNine extends Component {
           initialPage={0}
         >
           <View style={styles.pageStyle}>
-            <Text style={styles.header}>
-              {I18n.t("whatDoFrequenciesRepresent")}
-            </Text>
-            <Text style={styles.body}>
-              {I18n.t("PSDDividedBands")}
-            </Text>
-          </View>
-
-          <View style={styles.pageStyle}>
-            <Text style={styles.header}>
-              {I18n.t("brainWaves")}
-            </Text>
-            <Text style={styles.body}>
-              {I18n.t("freqCorrelatedBrain")}{' '}
-              <PopUpLink onPress={() => this.setState({ popUp1Visible: true })}>
-                {I18n.t("brainWavesLink")}
-              </PopUpLink>.
-            </Text>
-          </View>
-
-          <View style={styles.pageStyle}>
-            <Text style={styles.header}>
-              {I18n.t("harnessingBrainWaves")}
-            </Text>
-            <Text style={styles.body}>
-              {I18n.t("noticePowerChanges")}{' '}
-              {I18n.t("BCILink")}.
-            </Text>
-            <LinkButton path="/bciOne">
-              {I18n.t("nextLink")}
-            </LinkButton>
+            {/*<LinkButton path="/bciOne">*/}
+              {/*{I18n.t("nextLink")}*/}
+            {/*</LinkButton>*/}
           </View>
         </ViewPagerAndroid>
 

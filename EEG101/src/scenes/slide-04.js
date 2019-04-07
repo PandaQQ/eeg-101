@@ -61,39 +61,39 @@ class SlideFour extends Component {
           initialPage={0}
         >
           <View style={styles.pageStyle}>
-            <Text style={styles.header}>
-              {I18n.t("meaningfulData")}
-            </Text>
-            <Text style={styles.body}>
-              {I18n.t("firstEEGMust")}{' '}
-              <PopUpLink onPress={() => this.setState({ popUpVisible: true })}>
-                {I18n.t("filteredLink")}
-              </PopUpLink>{' '}
-              {I18n.t("toReduceSignals")}
-            </Text>
+            {/*<Text style={styles.header}>*/}
+              {/*{I18n.t("meaningfulData")}*/}
+            {/*</Text>*/}
+            {/*<Text style={styles.body}>*/}
+              {/*{I18n.t("firstEEGMust")}{' '}*/}
+              {/*<PopUpLink onPress={() => this.setState({ popUpVisible: true })}>*/}
+                {/*{I18n.t("filteredLink")}*/}
+              {/*</PopUpLink>{' '}*/}
+              {/*{I18n.t("toReduceSignals")}*/}
+            {/*</Text>*/}
             <LinkButton path="./slideNine">
               {I18n.t("nextLink")}
             </LinkButton>
           </View>
         </ViewPagerAndroid>
 
-        <PopUp
-          onClose={() => this.setState({ popUpVisible: false })}
-          visible={this.state.popUpVisible}
-          title={I18n.t("filtersTitle")}
-        >
-          {I18n.t("filtersDescription")}
-        </PopUp>
+        {/*<PopUp*/}
+          {/*onClose={() => this.setState({ popUpVisible: false })}*/}
+          {/*visible={this.state.popUpVisible}*/}
+          {/*title={I18n.t("filtersTitle")}*/}
+        {/*>*/}
+          {/*{I18n.t("filtersDescription")}*/}
+        {/*</PopUp>*/}
 
-        <PopUp
-          onClose={() => this.props.history.push("/connectorOne")}
-          visible={
-            this.props.connectionStatus === config.connectionStatus.DISCONNECTED
-          }
-          title={I18n.t("museDisconnectedTitle")}
-        >
-          {I18n.t("museDisconnectedDescription")}
-        </PopUp>
+        {/*<PopUp*/}
+          {/*onClose={() => this.props.history.push("/connectorOne")}*/}
+          {/*visible={*/}
+            {/*this.props.connectionStatus === config.connectionStatus.DISCONNECTED*/}
+          {/*}*/}
+          {/*title={I18n.t("museDisconnectedTitle")}*/}
+        {/*>*/}
+          {/*{I18n.t("museDisconnectedDescription")}*/}
+        {/*</PopUp>*/}
       </View>
     );
   }

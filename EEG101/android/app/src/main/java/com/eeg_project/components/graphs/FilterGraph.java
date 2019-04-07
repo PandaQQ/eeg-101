@@ -75,7 +75,7 @@ public class FilterGraph extends FrameLayout {
 
     // Bridged props
     // Default channelOfInterest = 1 (left ear)
-    public int channelOfInterest = 1;
+    public int channelOfInterest = 4;
     private String offlineData = "";
     public boolean isRecording;
     private int notchFrequency;

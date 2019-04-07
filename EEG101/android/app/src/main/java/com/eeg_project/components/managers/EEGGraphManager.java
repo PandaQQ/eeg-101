@@ -108,5 +108,4 @@ public class EEGGraphManager extends SimpleViewManager<EEGGraph> {
         eegGraph.stopDataListener();
         eegGraph.startDataListener();
     }
-
 }
