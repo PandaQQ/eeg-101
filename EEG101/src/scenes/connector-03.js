@@ -67,7 +67,7 @@ class ConnectorThree extends Component {
         </View>
 
         <View style={styles.buttonContainer}>
-          <LinkButton path="/SlideFour"> START </LinkButton>
+          <LinkButton path="/sandbox"> START </LinkButton>
         </View>
       </View>
     );

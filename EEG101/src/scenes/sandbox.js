@@ -180,12 +180,6 @@ class Sandbox extends Component {
                 >
                   PSD
                 </SandboxButton>
-                <RecorderButton
-                  isRecording={this.state.isRecording}
-                  onPress={() => {
-                    this.setState({ isRecording: !this.state.isRecording });
-                  }}
-                />
               </View>
 
               <View style={styles.textContainer}>
@@ -199,8 +193,7 @@ class Sandbox extends Component {
             />
           </View>
 
-          <LinkButton path="/end">END</LinkButton>
-        </View>
+      </View>
         <PopUp
           onClose={() => this.props.history.push("/connectorOne")}
           visible={

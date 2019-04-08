@@ -31,6 +31,7 @@ import SlideSix from "./src/scenes/slide-06";
 import SlideSeven from "./src/scenes/slide-07";
 import SlideEight from "./src/scenes/slide-08";
 import SlideNine from "./src/scenes/slide-09";
+import MyConnector from "./src/scenes/myconnector"
 import Sandbox from "./src/scenes/sandbox";
 import End from "./src/scenes/slide-end";
 import BCIOne from "./src/scenes/bci-01.js";
@@ -78,13 +79,8 @@ class EEG101 extends Component {
               <StatusBar backgroundColor={colors.mariner} />
                 <Switch>
                   <Route exact path="/" component={Landing} />
-                  <Route path="/connectorOne" component={ConnectorOne} />
-                  <Route path="/connectorTwo" component={ConnectorTwo} />
-                  <Route path="/connectorThree" component={ConnectorThree} />
-                  <Route path="/slideFour" component={SlideFour} />
-                  <Route path="/slideNine" component={SlideNine} />
-                  <Route path="/bciOne" component={BCIOne} />
-                  <Route path="/bciTwo" component={BCITwo} />
+                  <Route path="/myconnector" component={MyConnector}/>
+                  <Route path="/sandbox" component={Sandbox} />
                   <Route path="/bciRun" component={BCIRun} />
                   <Route path="/bciTrain" component={BCITrain} />
                 </Switch>

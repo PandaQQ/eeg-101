@@ -26,7 +26,7 @@ class ConnectorTwo extends Component {
       this.props.connectionStatus === config.connectionStatus.CONNECTED
     ) {
       return (
-        <LinkButton path="/connectorThree">
+        <LinkButton path="/sandbox">
           {I18n.t("getStartedLink")}
         </LinkButton>
       );

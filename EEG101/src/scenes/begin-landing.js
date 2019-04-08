@@ -7,6 +7,7 @@ import I18n from "../i18n/i18n";
 import { bindActionCreators } from "redux";
 import { setGraphViewDimensions } from "../redux/actions";
 import * as colors from "../styles/colors";
+import config from "../redux/config";
 
 function mapStateToProps(state) {
   return {
@@ -28,6 +29,7 @@ class Landing extends Component {
   constructor(props) {
     super(props);
   }
+
 
   render() {
     return (
@@ -52,11 +54,18 @@ class Landing extends Component {
             MyBrian demonstrates how EEG device can be used to measure the electrical activity of the brain.
           </Text>
         </View>
-        <View style={styles.buttonContainer}>
-          <LinkButton path="/connectorOne">
-            {I18n.t("getStartedLink")}
-          </LinkButton>
-        </View>
+          <View style={styles.buttonContainer}>
+            <LinkButton path="/myconnector" disabled={this.props.connectionStatus === config.connectionStatus.CONNECTED}>
+              CONNECT MUSE
+            </LinkButton>
+            <LinkButton path="/sandbox" disabled={this.props.connectionStatus !== config.connectionStatus.CONNECTED}>
+              EEG SANDBOX
+            </LinkButton>
+            <LinkButton path="/bciTrain" disabled={this.props.connectionStatus !== config.connectionStatus.CONNECTED}>
+              EEG BCI
+            </LinkButton>
+          </View>
+
         </View>
     );
   }

@@ -156,7 +156,7 @@ class BCITrain extends Component {
   }
 
   renderClassifierContainer() {
-    if (this.state.score == "") {
+    if (this.state.score === "") {
       return (
         <View style={styles.classifierContainer}>
           <Text style={styles.sectionTitle}>Classifier</Text>
@@ -251,7 +251,7 @@ class BCITrain extends Component {
                 onPress={() => {
                   this.props.setBCIAction(config.bciAction.VIBRATE);
                 }}
-                active={this.props.bciAction == config.bciAction.VIBRATE}
+                active={this.props.bciAction === config.bciAction.VIBRATE}
               >
                 <Image
                   style={styles.image}
@@ -263,7 +263,7 @@ class BCITrain extends Component {
                 onPress={() => {
                   this.props.setBCIAction(config.bciAction.LIGHT);
                 }}
-                active={this.props.bciAction == config.bciAction.LIGHT}
+                active={this.props.bciAction === config.bciAction.LIGHT}
               >
                 <Image
                   style={styles.image}
@@ -311,7 +311,7 @@ class BCITrain extends Component {
           </View>
         </View>
         <PopUp
-          onClose={() => this.props.history.push("/connectorOne")}
+          onClose={() => this.props.history.push("/myconnector")}
           visible={
             this.props.connectionStatus === config.connectionStatus.DISCONNECTED
           }

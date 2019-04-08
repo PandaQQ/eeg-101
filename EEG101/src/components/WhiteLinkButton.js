@@ -19,20 +19,29 @@ export default class WhiteButton extends Component{
 
 	render() {
     const dynamicStyle = (this.props.disabled) ? styles.disabled: styles.active;
-		return(
-      <Link
-        to={this.props.path}
-        replace={this.props.replace}
-        component={TouchableOpacity}
-      >
-        <View style={dynamicStyle}>
-          <Text style={{color: '#6CCBEF', fontFamily: 'Roboto-Bold', fontSize: 15}}>{this.props.children}</Text>
-        </View>
-      </Link>
-        )
+    if(this.props.disabled) {
+      return (
+          <View style={dynamicStyle}>
+            <Text style={{color: '#6CCBEF', fontFamily: 'Roboto-Bold', fontSize: 15}}>{this.props.children}</Text>
+          </View>
+      )
+    }
+    else {
+     return(
+         <Link
+             to={this.props.path}
+             replace={this.props.replace}
+             component={TouchableOpacity}
+         >
+           <View style={dynamicStyle}>
+             <Text style={{color: '#6CCBEF', fontFamily: 'Roboto-Bold', fontSize: 15}}>{this.props.children}</Text>
+           </View>
+         </Link>
+     )
+    }
 	}
 
-};
+}
 
 const styles = StyleSheet.create({
 
