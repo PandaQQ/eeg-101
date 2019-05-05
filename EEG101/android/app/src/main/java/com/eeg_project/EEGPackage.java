@@ -9,6 +9,7 @@ import com.eeg_project.components.managers.EEGGraphManager;
 import com.eeg_project.components.managers.PSDGraphManager;
 import com.eeg_project.components.connector.ConnectorModule;
 import com.eeg_project.components.battery.BatteryModule;
+import com.eeg_project.components.meditation_focus_classifier.MeditationModule;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.JavaScriptModule;
 import com.facebook.react.bridge.NativeModule;
@@ -30,6 +31,7 @@ public class EEGPackage implements ReactPackage {
         return Arrays.<NativeModule>asList(
                 new ConnectorModule(reactApplicationContext),
                 new ClassifierModule(reactApplicationContext),
+				new MeditationModule(reactApplicationContext),
 				new BatteryModule(reactApplicationContext),
                 appState.eventEmitter);
     }

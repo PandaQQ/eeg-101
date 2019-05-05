@@ -2,6 +2,7 @@
 // Functions that interact with the Redux store.
 import Connector from "../native/Connector";
 import Classifier from "../native/Classifier";
+import Meditation from "../native/Meditation"
 import { NativeModules, NativeEventEmitter, Vibration } from "react-native";
 import Torch from "react-native-torch";
 import {
@@ -166,20 +167,28 @@ export function initNativeEventListeners() {
       }
     });
 
+    // Meditation Classifier
+      nativeEventEmitter.addListener("MEDITATION_VALUE", message => {
+
+        console.log(message);
+      });
+
+
     return dispatch(setNativeEventEmitter(nativeEventEmitter));
   };
 }
 
 export function startBCI() {
   return dispatch => {
-    Classifier.runClassification();
+    // Classifier.runClassification();
+      Meditation.startMediationReading();
     dispatch(startBCIRunning());
   };
 }
 
 export function stopBCI() {
   return (dispatch, getState) => {
-    Classifier.stopCollecting();
+    // Classifier.stopCollecting();
     dispatch(stopBCIRunning());
     actionOff(getState().bciAction);
   };

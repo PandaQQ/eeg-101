@@ -6,6 +6,7 @@ import { setBCIAction } from "../redux/actions";
 import config from "../redux/config.js";
 import { MediaQueryStyleSheet } from "react-native-responsive";
 import Classifier from "../native/Classifier.js";
+import Meditation from "../native/Meditation";
 import PopUp from "../components/PopUp";
 import DataCollectionIndicator from "../components/DataCollectionIndicator.js";
 import DecisionButton from "../components/DecisionButton.js";
@@ -59,6 +60,7 @@ class BCITrain extends Component {
   componentDidMount() {
     Classifier.startClassifier(this.props.notchFrequency);
     Classifier.startNoiseListener();
+      Meditation.startMediationReading();
   }
 
   componentWillUnmount() {

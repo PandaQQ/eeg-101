@@ -54,4 +54,10 @@ public class AppNativeEventEmitter extends ReactContextBaseJavaModule {
                 .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
                 .emit(eventName, params);
     }
+    public void sendEvent(String eventName, double result) {
+        getReactApplicationContext()
+                .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
+                .emit(eventName, result);
+    }
+
 }

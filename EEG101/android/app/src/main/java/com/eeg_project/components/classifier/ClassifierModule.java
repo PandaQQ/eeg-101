@@ -410,7 +410,6 @@ public class ClassifierModule extends ReactContextBaseJavaModule implements Buff
         @Override
         public void receiveMuseDataPacket(final MuseDataPacket p, final Muse muse) {
             getEegChannelValues(newData, p);
-
             if (filterOn) {
                 bandstopFiltState = bandstopFilter.transform(newData, bandstopFiltState);
                 newData = bandstopFilter.extractFilteredSamples(bandstopFiltState);

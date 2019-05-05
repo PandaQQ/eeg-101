@@ -80,10 +80,10 @@ class BCIRun extends Component {
             </View>
             <View style={styles.buttonContainer}>
               <View style={styles.buttonFlex}>
-                <LinkButton path="/end">{I18n.t("endEeg101")}</LinkButton>
+                <LinkButton path="/">END</LinkButton>
               </View>
               <View style={styles.buttonFlex}>
-                <LinkButton path="/bciTrain">{I18n.t("retrainBci")}</LinkButton>
+                <LinkButton path="/bciTrain">BCI Train</LinkButton>
               </View>
             </View>
           </View>
