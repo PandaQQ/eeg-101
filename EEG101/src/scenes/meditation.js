@@ -21,6 +21,20 @@ function mapDispatchToProps(dispatch) {
 
 class Meditation extends Component {
 
+    constructor(props) {
+        super(props);
+
+        // Initialize States
+    }
+
+    componentDidMount() {
+        Meditation.startMediationReading();
+    }
+
+
+    componentWillUnmount() {
+        this.props.stopMeditationReading();
+    }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Meditation);

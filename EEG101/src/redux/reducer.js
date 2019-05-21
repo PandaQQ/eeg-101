@@ -16,7 +16,9 @@ import {
   SET_NATIVE_EMITTER,
   START_BCI_RUNNING,
   STOP_BCI_RUNNING,
-  SET_BATTERY_VALUE
+    START_MED_READING,
+    STOP_MED_READING,
+    SET_BATTERY_VALUE
 } from "./actionTypes";
 
 const initialState = {
@@ -32,7 +34,8 @@ const initialState = {
   classifierData: new Array(30).fill(1),
   nativeEventEmitter: {},
   isBCIRunning: false,
-  batteryValue: null
+  batteryValue: null,
+  isMeditationReading: false
 };
 
 export default function reducer(state = initialState, action = {}) {
@@ -116,6 +119,18 @@ export default function reducer(state = initialState, action = {}) {
         ...state,
         isBCIRunning: false
       };
+
+      case START_MED_READING:
+       return{
+           ...state,
+           isMeditationReading: true
+       };
+
+      case STOP_MED_READING:
+        return{
+            ...state,
+            isMeditationReading: false
+        };
 
     case SET_BATTERY_VALUE:
       return {

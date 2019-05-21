@@ -8,6 +8,7 @@ import { bindActionCreators } from "redux";
 import { setGraphViewDimensions } from "../redux/actions";
 import * as colors from "../styles/colors";
 import config from "../redux/config";
+import {white} from "../styles/colors";
 
 function mapStateToProps(state) {
   return {
@@ -32,6 +33,36 @@ class Landing extends Component {
 
 
   render() {
+
+      let show_buttons;
+      if(this.props.connectionStatus !== config.connectionStatus.CONNECTED) {
+          show_buttons = (
+              <View style={styles.buttonContainer}>
+                  <LinkButton path="/sandbox"  >
+                      EEG SANDBOX
+                  </LinkButton>
+                  <LinkButton path="/bciTrain" >
+                      EEG BCI
+                  </LinkButton>
+                  <LinkButton path="/meditation" >
+                      Meditation
+                  </LinkButton>
+                  <LinkButton path="/quiz" >
+                      MyBrain Quiz
+                  </LinkButton>
+              </View>
+          );
+      } else {
+          show_buttons = (
+              <View style={styles.buttonContainer}>
+                  <LinkButton path="/sandbox">
+                      EEG SANDBOX
+                  </LinkButton>
+              </View>
+          );
+
+      }
+
     return (
         <View style={styles.container}>
         <View
@@ -42,7 +73,7 @@ class Landing extends Component {
               x: x,
               y: y,
               width: width,
-              height: height * 0.75
+              height: height * 0.5
             });
           }}
           style={styles.titleBox}
@@ -53,19 +84,9 @@ class Landing extends Component {
           <Text style={styles.body}>
             MyBrian demonstrates how EEG device can be used to measure the electrical activity of the brain.
           </Text>
-        </View>
-          <View style={styles.buttonContainer}>
-            <LinkButton path="/myconnector" disabled={this.props.connectionStatus === config.connectionStatus.CONNECTED}>
-              CONNECT MUSE
-            </LinkButton>
-            <LinkButton path="/sandbox" disabled={this.props.connectionStatus !== config.connectionStatus.CONNECTED}>
-              EEG SANDBOX
-            </LinkButton>
-            <LinkButton path="/bciTrain" disabled={this.props.connectionStatus !== config.connectionStatus.CONNECTED}>
-              EEG BCI
-            </LinkButton>
-          </View>
 
+        </View>
+            {show_buttons}
         </View>
     );
   }
@@ -93,8 +114,8 @@ const styles = MediaQueryStyleSheet.create(
     },
 
     buttonContainer: {
-      flex: 1,
-      margin: 40,
+      flex: 4,
+      margin: 50,
       justifyContent: "center"
     },
 

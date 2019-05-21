@@ -19,7 +19,9 @@ import {
   SET_NATIVE_EMITTER,
   START_BCI_RUNNING,
   STOP_BCI_RUNNING,
-  SET_BATTERY_VALUE
+  SET_BATTERY_VALUE,
+    START_MED_READING,
+    STOP_MED_READING,
 } from "./actionTypes.js";
 import config from "./config";
 import Battery from "../native/Battery.js";
@@ -73,6 +75,10 @@ export const setNativeEventEmitter = payload => ({
 export const startBCIRunning = () => ({ type: START_BCI_RUNNING });
 
 export const stopBCIRunning = () => ({ type: STOP_BCI_RUNNING });
+
+export const startMedReading = () => ({ type: START_MED_READING});
+
+export const stopMedReading = () => ({type: STOP_MED_READING});
 
 export const setBatteryValue = payload => ({ payload, type: SET_BATTERY_VALUE });
 
@@ -170,6 +176,7 @@ export function initNativeEventListeners() {
     // Meditation Classifier
       nativeEventEmitter.addListener("MEDITATION_VALUE", message => {
 
+        console.log('MEDITATION_VALUE');
         console.log(message);
       });
 
@@ -180,18 +187,33 @@ export function initNativeEventListeners() {
 
 export function startBCI() {
   return dispatch => {
-    // Classifier.runClassification();
-      Meditation.startMediationReading();
+    Classifier.runClassification();
+      // Meditation.startMediationReading();
     dispatch(startBCIRunning());
   };
 }
 
 export function stopBCI() {
   return (dispatch, getState) => {
-    // Classifier.stopCollecting();
+    Classifier.stopCollecting();
     dispatch(stopBCIRunning());
     actionOff(getState().bciAction);
   };
+}
+
+export function startMediationReading() {
+  return dispatch => {
+      Meditation.startMediationReading();
+      dispatch(startMedReading());
+  };
+
+}
+
+export function stopMeditationReading() {
+    return dispatch => {
+      Meditation.stopMeditationReading();
+      dispatch(stopMedReading());
+    };
 }
 
 // -------------------------------------------------------------------------

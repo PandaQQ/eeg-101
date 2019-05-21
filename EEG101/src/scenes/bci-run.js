@@ -89,7 +89,7 @@ class BCIRun extends Component {
           </View>
         </ViewPagerAndroid>
         <PopUp
-          onClose={() => this.props.history.push("/connectorOne")}
+          onClose={() => this.props.history.push("/myconnector")}
           visible={
             this.props.connectionStatus === config.connectionStatus.DISCONNECTED
           }
