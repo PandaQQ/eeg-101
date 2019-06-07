@@ -2,24 +2,25 @@ import {Component} from "react";
 import {bindActionCreators} from "redux";
 import {initNativeEventListeners} from "../redux/actions";
 import {connect} from "react-redux";
-import { View, FlatList} from "react-native";
 import React from "react";
 import {MediaQueryStyleSheet} from "react-native-responsive";
 import * as colors from "../styles/colors";
 import { startMediationReading, stopMeditationReading } from "../redux/actions";
-import { ListItem } from 'react-native-elements'
+import PopUpList from "../components/PopUpList";
+import ListItemBlock from "../components/ListItemBlock";
+import I18n from "../i18n/i18n";
 
-const list = [
-    {
-        name: 'Amy Farha',
-        subtitle: 'Vice President'
-    },
-    {
-        name: 'Chris Jackson',
-        avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
-        subtitle: 'Vice Chairman'
-    }
-    ];
+import {
+    Platform,
+    StyleSheet,
+    Text,
+    View,
+    Image,
+    ListView,
+    SafeAreaView,
+    TouchableHighlight
+ } from 'react-native';
+
 
 function mapStateToProps(state) {
     return {
@@ -46,17 +47,25 @@ function mapDispatchToProps(dispatch) {
 
 class QuizList extends Component {
 
+
+
     constructor(props) {
         super(props);
         // Initialize States
         // Initialize States
         this.state = {
-            text: null
+            dataSource: new ListView.DataSource({ //定义数据源
+                rowHasChanged: (row1, row2) => row1 !== row2
+            }),
+            loaded: false
         };
+
+        this._renderRow = this._renderRow.bind(this);
     }
 
     componentDidMount() {
         // this.props.startMediationReading();
+        this.fetchData(); //开始请求数据
     }
 
 
@@ -64,44 +73,136 @@ class QuizList extends Component {
         // this.props.stopMeditationReading();
     }
 
-    keyExtractor = (item, index) => index.toString()
+
+    fetchData() {
+         let data = [
+             {
+                 title: '1',
+                 year:'2',
+                 average:6
+             },
+             {
+                 title: '2',
+                 year:'2',
+                 average:6
+             },
+             {
+                 title: '3',
+                 year:'2',
+                 average:6
+             },
+             {
+                 title: '4',
+                 year:'2',
+                 average:6
+             }
+         ];
+
+        // fetch("https://api.douban.com/v2/movie/in_theaters").then((response) => response.json()).then((responseData) => {
+            this.setState({
+                dataSource: this.state.dataSource.cloneWithRows(data), //读取返回的所有电影数据
+                });
+      // }).done();
+    }
 
 
-    renderItem = ({ item }) => (
-        <ListItem
-            title={item.name}
-            subtitle={item.subtitle}
-            leftAvatar={{
-                source: item.avatar_url && { uri: item.avatar_url },
-                title: item.name[0]
-            }}
-        />
-    )
+    _pressRow(rowData){
+        console.log(rowData);
+        this.props.history.replace("/doingQuiz");
+    }
 
+
+    _renderRow(rowData, sectionID, rowID) {
+        return (
+            <SafeAreaView>
+                <TouchableHighlight onPress={
+                    ()=>{
+                        this._pressRow(rowData)
+                    }
+                }>
+                <View style={styles.row}>
+                    <Image
+                        style={styles.thumb}
+                        source= { {
+                            uri: 'http://static.runoob.com/images/demo/demo1.jpg'
+                        } } />
+                    <View style={styles.texts}>
+                        <Text style={styles.textTitle}>
+                            {rowData.title}
+                        </Text>
+                        <Text style={styles.textTitle}>
+                            年份: {rowData.year}
+                        </Text>
+                        <Text style={styles.textTitle}>
+                            豆瓣评分: {rowData.average}
+                        </Text>
+                    </View>
+                </View>
+                </TouchableHighlight>
+                <View style={styles.separator}/>
+
+            </SafeAreaView>
+        );
+    };
 
 
     render() {
-
-
         return (
             <View style={styles.container}>
-                <FlatList
-                    keyExtractor={this.keyExtractor}
-                    data={list}
-                    renderItem={this.renderItem}
-                />
+                <View style={styles.content}>
+                    <Text style={styles.header}>
+                        MyBrain Quiz List
+                    </Text>
+                </View>
 
+                <ListView automaticallyAdjustContentInsets={false} //此选项可以修复掉会自动多出来的大约 10px 的空行
+                          dataSource={this.state.dataSource}
+                          renderRow={this._renderRow} />
             </View>
-        );
+            );
     }
-
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(QuizList);
 
 const styles = MediaQueryStyleSheet.create(
     // Base styles
-    {
+    {   row: {
+            flexDirection: 'row',
+            padding: 10
+        },
+        separator: {
+            height: 1,
+            backgroundColor: '#EEEEEE'
+        },
+        thumb: {
+            width: 60,
+            height: 80,
+            borderRadius: 5
+        },
+        textTitle: {
+            flex: 1,
+            textAlign: "left",
+            paddingLeft: 10,
+            fontWeight: "bold",
+            flexDirection: 'row',
+            color: colors.white
+        },
+        texts:{
+            flexDirection: 'column',
+            paddingTop: 5
+        },
+        listContainer:{
+            marginTop: 20,
+            borderTopWidth: 0,
+            borderBottomWidth: 0,
+        },
+        ListItemContainer:{
+            borderTopWidth: 0,
+            borderBottomWidth: 0,
+            marginLeft: 10,
+            height: 65
+        },
         currentTitle: {
             marginLeft: 20,
             marginTop: 10,

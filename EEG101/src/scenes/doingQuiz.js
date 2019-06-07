@@ -48,7 +48,8 @@ class DoingQuiz extends Component {
         // Initialize States
         // Initialize States
         this.state = {
-            text: null
+            text: null,
+            position: 0
         };
     }
 
@@ -66,6 +67,7 @@ class DoingQuiz extends Component {
             text: `Selected index: ${index} , value: ${value}`
         })
     }
+
     finish = () => {
         // alert('email: ' + email + ' password: ' + pass)
 
@@ -73,7 +75,18 @@ class DoingQuiz extends Component {
         if(email === 'test' && pass === '1234') {
             this.props.history.replace("/doingQuiz");
         }*/
-        this.props.history.replace("/quiz");
+        // this.props.history.replace("/quiz");
+
+        let next = this.state.position + 1;
+        this.setState({
+            position: next
+        });
+        if(next === 5) {
+            this.props.history.replace("/quiz");
+        }
+        else {
+            this.refs.viewPage.setPage(next);
+        }
     }
 
 
@@ -89,10 +102,10 @@ class DoingQuiz extends Component {
                     </Text>
 
                     <Text style={styles.body}>
-                        Question Content 1
-                        Question Content 1
-                        Question Content 1
-                        Question Content 1
+                        Question Content {index}
+                        Question Content {index}
+                        Question Content {index}
+                        Question Content {index}
                     </Text>
 
                 </View>
@@ -128,7 +141,8 @@ class DoingQuiz extends Component {
         question_list.push(question(1));
         question_list.push(question(2));
         question_list.push(question(3));
-
+        question_list.push(question(4));
+        question_list.push(question(5));
 
         return (
             <View style={styles.container}>
@@ -159,6 +173,8 @@ class DoingQuiz extends Component {
                 <ViewPagerAndroid //Allows us to swipe between blocks
                     style={styles.viewPager}
                     initialPage={0}
+                    scrollEnabled={false}
+                    ref="viewPage"
                 >
                     {question_list}
 
@@ -170,6 +186,7 @@ class DoingQuiz extends Component {
                         style = {styles.submitButton}
                         onPress = {
                             () => {
+                                this.finish();
                             }
                         }>
                         <Text style = {styles.submitButtonText}> Finish Quiz </Text>
