@@ -18,7 +18,8 @@ import {
   STOP_BCI_RUNNING,
     START_MED_READING,
     STOP_MED_READING,
-    SET_BATTERY_VALUE
+    SET_BATTERY_VALUE,
+    UPDATE_MED_DATA
 } from "./actionTypes";
 
 const initialState = {
@@ -32,6 +33,8 @@ const initialState = {
   notchFrequency: 60,
   noise: ["1", "2", "3", "4"],
   classifierData: new Array(30).fill(1),
+  medData: new Array(30).fill(1),
+  medValue: 30,
   nativeEventEmitter: {},
   isBCIRunning: false,
   batteryValue: null,
@@ -101,7 +104,12 @@ export default function reducer(state = initialState, action = {}) {
         ...state,
         classifierData: state.classifierData.concat(action.payload).slice(1)
       };
-
+      case  UPDATE_MED_DATA:
+        return {
+            ...state,
+            classifierData: state.medData.concat(action.payload).slice(1),
+            medValue: action.payload
+        };
     case SET_NATIVE_EMITTER:
       return {
         ...state,

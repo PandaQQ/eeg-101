@@ -60,7 +60,7 @@ class BCITrain extends Component {
   componentDidMount() {
     Classifier.startClassifier(this.props.notchFrequency);
     Classifier.startNoiseListener();
-      Meditation.startMediationReading();
+      // Meditation.startMediationReading();
   }
 
   componentWillUnmount() {

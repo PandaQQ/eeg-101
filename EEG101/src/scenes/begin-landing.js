@@ -35,7 +35,7 @@ class Landing extends Component {
   render() {
 
       let show_buttons;
-      if(this.props.connectionStatus !== config.connectionStatus.CONNECTED) {
+      if(this.props.connectionStatus === config.connectionStatus.CONNECTED) {
           show_buttons = (
               <View style={styles.buttonContainer}>
                   <LinkButton path="/sandbox"  >
@@ -55,8 +55,11 @@ class Landing extends Component {
       } else {
           show_buttons = (
               <View style={styles.buttonContainer}>
-                  <LinkButton path="/sandbox">
-                      EEG SANDBOX
+                  <LinkButton path="/myconnector">
+                      CONNECT MUSE
+                  </LinkButton>
+                  <LinkButton path="/quiz" >
+                      MyBrain Quiz
                   </LinkButton>
               </View>
           );

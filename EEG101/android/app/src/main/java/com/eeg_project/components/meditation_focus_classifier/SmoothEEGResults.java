@@ -26,7 +26,9 @@ public class SmoothEEGResults {
         for (double prob : predict) {
             sum += (prob / (double) smoothPredict);
         }
-        return sum;
+        sum = sum * 100;
+        int value = 100 - (int) sum;
+        return value;
     }
 
 }

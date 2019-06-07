@@ -35,7 +35,7 @@ export default class WhiteButton extends Component {
               style={{
                 color: colors.white,
                 fontFamily: "Roboto-Bold",
-                fontSize: 15
+                fontSize: 17
               }}
             >
               {this.props.children}

@@ -29,6 +29,7 @@ import static com.eeg_project.components.meditation_focus_classifier.SVMConstant
 import static com.eeg_project.components.meditation_focus_classifier.SVMConstants.N_START_BAND;
 import static com.eeg_project.components.meditation_focus_classifier.SVMConstants.OVER_LAP;
 import static com.eeg_project.components.meditation_focus_classifier.SVMConstants.SAMPLE_RATE;
+import static com.eeg_project.components.meditation_focus_classifier.SVMConstants.STRESS_CLASS;
 import static com.eeg_project.components.meditation_focus_classifier.SVMConstants.WINDOW_LENGTH;
 import static com.eeg_project.components.meditation_focus_classifier.SVMConstants.WINDOW_SHIFT;
 import static com.eeg_project.components.meditation_focus_classifier.SVMConstants.WINDOW_SIZE;
@@ -159,7 +160,7 @@ public class SVM_Helper {
         int progress = (int) (medSm.getResult() * 100.0);
         // rawMed.setText("" + prob[MEDITATION_CLASS] * 100);
         Log.d(TAG, "Progress:" + progress);
-        Log.d(TAG, "RAW Prog:" + prob[MEDITATION_CLASS] * 100.0);
+        Log.d(TAG, "RAW Prog:" + prob[STRESS_CLASS] * 100.0);
         Log.d(TAG, "medSm: " + medSm.getResult());
 
 //        pb_meditation_meter.setProgress(progress);

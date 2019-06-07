@@ -22,6 +22,7 @@ import {
   SET_BATTERY_VALUE,
     START_MED_READING,
     STOP_MED_READING,
+    UPDATE_MED_DATA
 } from "./actionTypes.js";
 import config from "./config";
 import Battery from "../native/Battery.js";
@@ -71,6 +72,12 @@ export const setNativeEventEmitter = payload => ({
   payload,
   type: SET_NATIVE_EMITTER
 });
+
+export const updateMedData = payload => ({
+    payload,
+    type: UPDATE_MED_DATA
+});
+
 
 export const startBCIRunning = () => ({ type: START_BCI_RUNNING });
 
@@ -154,6 +161,9 @@ export function initNativeEventListeners() {
 
     // Noise
     nativeEventEmitter.addListener("NOISE", message => {
+
+      console.log('NOISE');
+      console.log(message);
       dispatch(setNoise(Object.keys(message)));
       if (getState().isBCIRunning && Object.keys(message).length > 0) {
         actionOff(getState().bciAction);
@@ -176,8 +186,12 @@ export function initNativeEventListeners() {
     // Meditation Classifier
       nativeEventEmitter.addListener("MEDITATION_VALUE", message => {
 
-        console.log('MEDITATION_VALUE');
-        console.log(message);
+        if(getState().isMeditationReading) {
+            console.log('MEDITATION_VALUE');
+            console.log(message);
+            dispatch(updateMedData(message));
+            // dispatch(setNoise([]));
+        }
       });
 
 

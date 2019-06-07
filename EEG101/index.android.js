@@ -19,26 +19,14 @@ import * as colors from "./src/styles/colors.js";
 
 // Scenes
 import Landing from "./src/scenes/begin-landing";
-import ConnectorOne from "./src/scenes/connector-01";
-import ConnectorTwo from "./src/scenes/connector-02";
-import ConnectorThree from "./src/scenes/connector-03";
-import SlideOne from "./src/scenes/slide-01";
-import SlideTwo from "./src/scenes/slide-02";
-import SlideThree from "./src/scenes/slide-03";
-import SlideFour from "./src/scenes/slide-04";
-import SlideFive from "./src/scenes/slide-05";
-import SlideSix from "./src/scenes/slide-06";
-import SlideSeven from "./src/scenes/slide-07";
-import SlideEight from "./src/scenes/slide-08";
-import SlideNine from "./src/scenes/slide-09";
 import MyConnector from "./src/scenes/myconnector"
 import Sandbox from "./src/scenes/sandbox";
-import End from "./src/scenes/slide-end";
-import BCIOne from "./src/scenes/bci-01.js";
-import BCITwo from "./src/scenes/bci-02.js";
 import BCIRun from "./src/scenes/bci-run.js";
 import BCITrain from "./src/scenes/bci-train.js";
-
+import MyBrainQuiz from "./src/scenes/MyBrainQuiz";
+import Meditation from "./src/scenes/meditation";
+import DoingQuiz from "./src/scenes/doingQuiz";
+import QuizList from "./src/scenes/quizList";
 
 // reducer is a function
 import reducer from "./src/redux/reducer";
@@ -79,10 +67,14 @@ class EEG101 extends Component {
               <StatusBar backgroundColor={colors.mariner} />
                 <Switch>
                   <Route exact path="/" component={Landing} />
-                  <Route path="/myconnector" component={MyConnector}/>
+                  <Route path="/myconnector" component={MyConnector} />
                   <Route path="/sandbox" component={Sandbox} />
                   <Route path="/bciRun" component={BCIRun} />
                   <Route path="/bciTrain" component={BCITrain} />
+                  <Route path="/quiz" component={MyBrainQuiz} />
+                  <Route path="/meditation" component={Meditation} />
+                  <Route path="/doingQuiz" component={DoingQuiz} />
+                  <Route path="/quizList"  component={QuizList} />
                 </Switch>
             </View>
           </AndroidBackButton>

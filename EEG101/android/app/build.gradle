@@ -88,7 +88,7 @@ android {
     defaultConfig {
         applicationId "com.eeg_project"
         minSdkVersion 16
-        targetSdkVersion 25
+        targetSdkVersion 26
         versionCode 26
         versionName "2.6"
         multiDexEnabled true
@@ -140,6 +140,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-vector-icons')
     compile project(':lottie-react-native')
     compile project(':react-native-i18n')
     compile project(':react-native-torch')
